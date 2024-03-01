@@ -1,27 +1,27 @@
 import usePopularImages from "../hooks/usePopularImages";
+import ImageCard from "./ImageCard";
 
-const Main = () => {
+const Main: React.FC = () => {
   const { lastPopularImageRef, isFetching, allPopularImages } =
     usePopularImages();
 
+  console.log(allPopularImages.length);
   return (
     <main className="flex  items-center flex-wrap">
       <h2>images</h2>
       <ul className="flex w-full flex-col justify-center items-center">
         {allPopularImages?.map((imageInfo, i, allImages) => {
-          // console.log(imageInfo);
+          // console.log(imageInfo.urls);
           return (
             <li key={imageInfo.id}>
-              <div
-                ref={allImages.length - 1 === i ? lastPopularImageRef : null}
-                className="w-48 h-48 "
-              >
-                <img
-                  className="w-40 h-40"
-                  src={imageInfo.urls.regular}
-                  alt=""
-                />
-              </div>
+              <ImageCard
+                imageSrc={imageInfo.urls.regular}
+                ref={
+                  allImages.length - 1 === i
+                    ? (lastPopularImageRef as React.Ref<HTMLDivElement>)
+                    : null
+                }
+              />
             </li>
           );
         })}
