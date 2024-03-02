@@ -12,6 +12,7 @@ const ImageCard = forwardRef<HTMLDivElement, ImageCardProps>(
     function handleModalChange() {
       setIsModalVisible(!isModalVisible);
     }
+
     return (
       <div className="flex justify-center items-center flex-col">
         {isModalVisible ? (

@@ -1,13 +1,19 @@
 import customFetch from "./axios";
 
-export const fetchImagesByQuery = async (query = "tbilisi") => {
+export const fetchImagesByQuery = async (
+  currentPageParam: number = 1,
+  query: string = "tbilisi"
+) => {
   try {
     const response = await customFetch.get(`/search/photos`, {
       params: {
         query: query,
+        per_page: 20,
+        page: currentPageParam,
       },
     });
-    return response;
+
+    return response.data;
   } catch (error) {
     console.error("Error fetching images by query:", error);
     throw error;

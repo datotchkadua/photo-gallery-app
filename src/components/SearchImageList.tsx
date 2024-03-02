@@ -1,16 +1,15 @@
 import React from "react";
-import usePopularImages from "../hooks/usePopularImages";
 import ImageCard from "./ImageCard";
 import Loading from "./Loading";
+import useImagesByQuery from "../hooks/useImagesByQuery";
 
-const PopularImagesList = () => {
-  const { lastPopularImageRef, isFetching, allPopularImages } =
-    usePopularImages();
+const SearchImageList = ({ debouncedSearchValue }) => {
+  const { imagesByQuery, isFetching, lastQueryImageRef } =
+    useImagesByQuery(debouncedSearchValue);
   return (
     <section className="flex w-full flex-col  justify-center items-center">
-      <h2 className="text-3xl font-bold my-5">Popular images</h2>
       <ul className="flex w-full flex-col">
-        {allPopularImages?.map((imageInfo, i, allImages) => {
+        {imagesByQuery?.map((imageInfo, i, allImages) => {
           return (
             <li key={imageInfo.id}>
               <ImageCard
@@ -18,7 +17,7 @@ const PopularImagesList = () => {
                 imageId={imageInfo.id}
                 ref={
                   allImages.length - 1 === i
-                    ? (lastPopularImageRef as React.Ref<HTMLDivElement>)
+                    ? (lastQueryImageRef as React.Ref<HTMLDivElement>)
                     : null
                 }
               />
@@ -31,4 +30,4 @@ const PopularImagesList = () => {
   );
 };
 
-export default PopularImagesList;
+export default SearchImageList;

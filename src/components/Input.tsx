@@ -1,8 +1,10 @@
-const Input: React.FC = () => {
+const Input: React.FC = ({ searchValue, setSearchValue }) => {
   return (
     <>
       <div className="relative  w-[250px] sm:w-[400px] my-10">
         <input
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           type="text"
           placeholder="Search Image "
           className="  w-full block  p-2 ps-5  bg-green-50  border
