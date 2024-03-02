@@ -1,6 +1,6 @@
 import unsplashApi from "./axios";
 
-export const fetchImages = async (currentPageParam: number = 1) => {
+export const fetchPopularImages = async (currentPageParam: number = 1) => {
   try {
     const response = await unsplashApi.get(`/photos`, {
       params: {

@@ -1,5 +1,6 @@
 import usePopularImages from "../hooks/usePopularImages";
 import ImageCard from "./ImageCard";
+import Loading from "./Loading";
 
 const Main: React.FC = () => {
   const { lastPopularImageRef, isFetching, allPopularImages } =
@@ -7,15 +8,16 @@ const Main: React.FC = () => {
 
   console.log(allPopularImages.length);
   return (
-    <main className="flex  items-center flex-wrap">
+    <main className="flex justify-center items-center flex-wrap">
       <h2>images</h2>
       <ul className="flex w-full flex-col justify-center items-center">
         {allPopularImages?.map((imageInfo, i, allImages) => {
-          // console.log(imageInfo.urls);
+          // console.log(imageInfo);
           return (
             <li key={imageInfo.id}>
               <ImageCard
                 imageSrc={imageInfo.urls.regular}
+                imageId={imageInfo.id}
                 ref={
                   allImages.length - 1 === i
                     ? (lastPopularImageRef as React.Ref<HTMLDivElement>)
@@ -26,7 +28,7 @@ const Main: React.FC = () => {
           );
         })}
       </ul>
-      {isFetching && <h2 className="text-3xl">Loading...</h2>}
+      {isFetching && <Loading />}
     </main>
   );
 };

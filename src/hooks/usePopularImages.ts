@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { fetchImages } from "../api/fetchImages";
+import { fetchPopularImages } from "../api/fetchPopularImages";
 import useIntersectionObserver from "./useIntersectionObserver";
 
 const usePopularImages = () => {
@@ -11,7 +11,7 @@ const usePopularImages = () => {
   } = useInfiniteQuery({
     queryKey: ["popular-images"],
     initialPageParam: 1,
-    queryFn: ({ pageParam = 1 }) => fetchImages(pageParam),
+    queryFn: ({ pageParam = 1 }) => fetchPopularImages(pageParam),
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       const totalImages = +lastPage.headers["x-total"];
       if (lastPageParam >= totalImages / 20) return undefined;
