@@ -19,13 +19,14 @@ const ImageCard = forwardRef<HTMLDivElement, ImageCardProps>(
         ) : (
           <div
             ref={ref}
-            className=" flex justify-center items-center w-96 h-96 border border-gray-300 p- m-10 "
+            className=" flex justify-center items-center 
+            w-[250px] h-[250px] sm:w-96 sm:h-96 border border-gray-300 m-5  sm:m-10 p-2"
           >
             <img
               onClick={handleModalChange}
-              className=" cursor-pointer w-80 h-80"
+              className=" cursor-pointer w-full h-full"
               src={imageSrc}
-              alt=""
+              alt="image"
             />
           </div>
         )}

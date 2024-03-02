@@ -28,11 +28,10 @@ const ImageModal = ({ imageId, onHandleModalChange }: ImageModalProps) => {
     alt_description,
   } = imageData;
 
-  //
   return (
     <div className="flex justify-center items-center w-full md:inset-0 h-full	max-h-full">
       <div className=" flex justify-center items-center relative p-4 w-full  ">
-        <div className=" relative  sm:w-[400px] md:w-[700px] lg:w-[800px] bg-gray-200 rounded-lg shadow dark:bg-gray-700">
+        <div className=" relative  sm:w-[400px] md:w-[700px] lg:w-[900px] bg-gray-200 rounded-lg shadow dark:bg-gray-700">
           <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               {alt_description}
