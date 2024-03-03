@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { fetchImagesByQuery } from "../api/fetchImageByQuery";
@@ -10,6 +10,7 @@ const useImagesByQuery = (debouncedSearchValue: string) => {
     fetchNextPage,
     hasNextPage,
     isFetching,
+    isSuccess,
   } = useInfiniteQuery({
     queryKey: ["SearchedImages", debouncedSearchValue],
     initialPageParam: 1,
@@ -29,6 +30,12 @@ const useImagesByQuery = (debouncedSearchValue: string) => {
     () => fetchNextPage(),
     [hasNextPage, !isFetching]
   );
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("changed successfully");
+    }
+  }, [imagesByQuery, debouncedSearchValue, isSuccess]);
 
   return {
     imagesByQuery,

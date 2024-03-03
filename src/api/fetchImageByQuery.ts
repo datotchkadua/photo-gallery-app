@@ -2,7 +2,7 @@ import customFetch from "./axios";
 
 export const fetchImagesByQuery = async (
   currentPageParam: number = 1,
-  query: string = "tbilisi"
+  query: string
 ) => {
   try {
     const response = await customFetch.get(`/search/photos`, {

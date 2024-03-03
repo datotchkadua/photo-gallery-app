@@ -5,9 +5,13 @@ import App from "./App.tsx";
 import "./index.css";
 import { queryClient } from "../src/react-query/queryClient";
 
+import { store } from "./store.ts";
+import { Provider } from "react-redux";
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <QueryClientProvider client={queryClient}>
-    <App />
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <App />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </Provider>
 );
