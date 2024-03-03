@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { clearQueries } from "../features/queryImages/queryImagesSlice";
 import { useAppDispatch } from "../store";
-import { useState } from "react";
+import React, { useState } from "react";
 import SearchImageList from "./SearchImageList";
 
-const History = () => {
+const History: React.FC = () => {
   const [queryImage, setQueryImage] = useState<string>("");
   const dispatch = useAppDispatch();
   const searchedImages = useSelector(
@@ -21,7 +21,7 @@ const History = () => {
       <ul className="flex flex-row flex-wrap my-5">
         {searchedImages.map((query, index) => (
           <li
-            className={`mx-4 text-3xl ${
+            className={`mx-4 text-3xl cursor-pointer ${
               query === queryImage ? "text-red-600 font-bold " : ""
             }`}
             key={index}

@@ -1,4 +1,9 @@
-const Input: React.FC = ({ searchValue, setSearchValue }) => {
+interface InputProps {
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Input: React.FC<InputProps> = ({ searchValue, setSearchValue }) => {
   return (
     <>
       <div className="relative  w-[250px] sm:w-[400px] my-10">

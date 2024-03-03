@@ -1,4 +1,4 @@
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <div className=" w-full flex justify-center items-center h-full mb-10">
       <div

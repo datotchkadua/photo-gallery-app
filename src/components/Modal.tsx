@@ -9,7 +9,10 @@ type ImageModalProps = {
   imageId: string;
   onHandleModalChange: () => void;
 };
-const ImageModal = ({ imageId, onHandleModalChange }: ImageModalProps) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  imageId,
+  onHandleModalChange,
+}) => {
   const { data: imageData, isFetching } = useQuery({
     queryKey: ["imageById", imageId],
     queryFn: () => fetchImageById(imageId),

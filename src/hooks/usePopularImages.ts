@@ -1,7 +1,7 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchPopularImages } from "../api/fetchPopularImages";
 import useIntersectionObserver from "./useIntersectionObserver";
 import React from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 const usePopularImages = () => {
   const {
