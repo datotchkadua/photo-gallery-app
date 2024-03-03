@@ -6,7 +6,7 @@ import PopularImagesList from "./PopularImagesList";
 
 const Main: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
-  const debouncedSearchValue = useDebounce(searchValue, 1500);
+  const debouncedSearchValue = useDebounce(searchValue, 1000);
 
   return (
     <main className="flex justify-center items-center flex-wrap">
@@ -15,7 +15,7 @@ const Main: React.FC = () => {
       {!debouncedSearchValue ? (
         <PopularImagesList />
       ) : (
-        <SearchImageList debouncedSearchValue={debouncedSearchValue} />
+        <SearchImageList searchValue={debouncedSearchValue} />
       )}
     </main>
   );

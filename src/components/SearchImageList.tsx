@@ -3,9 +3,9 @@ import ImageCard from "./ImageCard";
 import Loading from "./Loading";
 import useImagesByQuery from "../hooks/useImagesByQuery";
 
-const SearchImageList = ({ debouncedSearchValue }) => {
+const SearchImageList = ({ searchValue }) => {
   const { imagesByQuery, isFetching, lastQueryImageRef } =
-    useImagesByQuery(debouncedSearchValue);
+    useImagesByQuery(searchValue);
   return (
     <section className="flex w-full flex-col  justify-center items-center">
       <ul className="flex w-full flex-col">

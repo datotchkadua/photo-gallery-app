@@ -5,7 +5,7 @@ interface QueryState {
 }
 
 const initialState: QueryState = {
-  queries: ["0"],
+  queries: [],
 };
 
 const queryImagesSlice = createSlice({
@@ -13,7 +13,10 @@ const queryImagesSlice = createSlice({
   initialState,
   reducers: {
     addQuery: (state, action: PayloadAction<string>) => {
-      state.queries.push(action.payload);
+      const query = action.payload;
+      if (!state.queries.includes(query)) {
+        state.queries.push(query);
+      }
     },
 
     clearQueries: (state) => {

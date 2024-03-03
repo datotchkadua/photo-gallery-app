@@ -1,10 +1,11 @@
 import { useCallback, useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-
 import { fetchImagesByQuery } from "../api/fetchImageByQuery";
+import { useAppDispatch } from "../store";
+import { addQuery } from "../features/queryImages/queryImagesSlice";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
-
 const useImagesByQuery = (debouncedSearchValue: string) => {
+  const dispatch = useAppDispatch();
   const {
     data: imagesByQuery,
     fetchNextPage,
@@ -32,10 +33,10 @@ const useImagesByQuery = (debouncedSearchValue: string) => {
   );
 
   useEffect(() => {
-    if (isSuccess) {
-      console.log("changed successfully");
+    if (isSuccess && imagesByQuery.length > 0) {
+      dispatch(addQuery(debouncedSearchValue));
     }
-  }, [imagesByQuery, debouncedSearchValue, isSuccess]);
+  }, [imagesByQuery, debouncedSearchValue, isSuccess, dispatch]);
 
   return {
     imagesByQuery,
