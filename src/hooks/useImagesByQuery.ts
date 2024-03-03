@@ -4,6 +4,7 @@ import { fetchImagesByQuery } from "../api/fetchImageByQuery";
 import { useAppDispatch } from "../store";
 import { addQuery } from "../features/queryImages/queryImagesSlice";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
+
 const useImagesByQuery = (debouncedSearchValue: string) => {
   const dispatch = useAppDispatch();
   const {
@@ -17,7 +18,7 @@ const useImagesByQuery = (debouncedSearchValue: string) => {
     initialPageParam: 1,
     queryFn: ({ pageParam = 1 }) =>
       fetchImagesByQuery(pageParam, debouncedSearchValue),
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
       if (lastPageParam >= lastPage.total_pages) return undefined;
       return lastPageParam + 1;
     },

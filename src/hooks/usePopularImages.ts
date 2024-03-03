@@ -13,7 +13,7 @@ const usePopularImages = () => {
     queryKey: ["popular-images"],
     initialPageParam: 1,
     queryFn: ({ pageParam = 1 }) => fetchPopularImages(pageParam),
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
+    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
       const totalImages = +lastPage.headers["x-total"];
       if (lastPageParam >= totalImages / 20) return undefined;
 
