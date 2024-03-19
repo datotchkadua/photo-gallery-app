@@ -4,6 +4,7 @@ import ImageList from "./ImageList";
 const PopularImagesList: React.FC = () => {
   const { lastPopularImageRef, isFetching, allPopularImages } =
     usePopularImages();
+
   return (
     <ImageList
       title="Popular Images"

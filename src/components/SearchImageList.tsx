@@ -8,6 +8,7 @@ type SearchImageProps = {
 const SearchImageList = ({ searchValue }: SearchImageProps) => {
   const { imagesByQuery, isFetching, lastQueryImageRef } =
     useImagesByQuery(searchValue);
+
   return (
     <ImageList
       title="Searched images"

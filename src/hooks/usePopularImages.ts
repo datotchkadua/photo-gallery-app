@@ -1,15 +1,10 @@
 import { fetchPopularImages } from "../api/fetchPopularImages";
 import useIntersectionObserver from "./useIntersectionObserver";
-import React from "react";
+
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 const usePopularImages = () => {
-  const {
-    data: allPopularImages,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-  } = useInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery({
     queryKey: ["popular-images"],
     initialPageParam: 1,
     queryFn: ({ pageParam = 1 }) => fetchPopularImages(pageParam),
@@ -19,12 +14,9 @@ const usePopularImages = () => {
 
       return lastPageParam + 1;
     },
-    select: React.useCallback(
-      (data) => data?.pages.flatMap((page) => page.data),
-
-      []
-    ),
   });
+
+  const allPopularImages = data ? data.pages.flatMap((page) => page.data) : [];
 
   const lastPopularImageRef = useIntersectionObserver<HTMLElement>(
     () => fetchNextPage(),
